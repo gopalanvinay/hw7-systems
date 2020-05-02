@@ -14,6 +14,8 @@ The initial value of `num` is 0 here. Tweaking this is useful during optimizatio
 
 ## Part 2: Optimized implementation
 
+NOTE: The optimized version is below the naive implementation in the same file, `converter.c`, and can be uncommented.
+
 Since we know the data only contains digits, we necessarily need not check if `*str` is between '0' and '9'. Instead, the  condition we can use is simply `while(*str != '\0')`. This change brings a slight decrease in runtime (about 6% decrease).
 
 The next bit of optimization is done by building a helper function `make_digit(char c)` which returns the `quote_t` value `c - '0'`. This allows us to initialize `num = make_digit(*str)`, which reduces iterations in the while loop. With this function, we also no longer need to check if `*str` is between '0' and '9', but just need to check if it's less than '9'. Secondly, a new variable `checker` is declared which stores the value returned by `make_digit`, therefore reducing further computational overhead.
